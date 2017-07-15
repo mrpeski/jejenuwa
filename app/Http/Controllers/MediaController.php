@@ -35,7 +35,7 @@ class MediaController extends Controller
      */
     public function store(Media $media, Request $request)
     {
-        $media->addNew($request->file('_upload'));
+        $media->addNew($request->file('file'));
         return back()->with('message', 'Success!');
     }
 
@@ -47,7 +47,9 @@ class MediaController extends Controller
      */
     public function show(Media $media, $type, $name)
     {
-        //
+        $image = $media->where('name', $name)->first();
+        // return $image;
+        return view('admin.media.single')->with('image', $image);
     }
 
     /**

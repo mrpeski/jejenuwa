@@ -17,6 +17,15 @@ class Media extends Model
 
     protected $baseDir = 'files';
 
+    protected $allowed_type = ['doc', 'image', 'video' ];
+
+
+    public function path() {
+    	$value = $this->getMime();
+    	$type = ($value == 'application') ? 'doc': $value;
+    	return url('admin/media/'.$type.'/'.$this->name);
+    }
+    
 	/**
 	 * Adds new Image to DB
 	 *
@@ -111,6 +120,11 @@ class Media extends Model
 	{
 		 return explode('/', $this->mime)[0] === 'image';
 	}
+
+	public function isVideo()
+	{
+		 return explode('/', $this->mime)[0] === 'video';
+	}
     
 
     protected function setThumbnailPath($path) {
@@ -126,7 +140,7 @@ class Media extends Model
 	}
 
     protected function getMime() {
-    	return $this->mime;
+    	return explode('/', $this->mime)[0];
     }
 
 	/**

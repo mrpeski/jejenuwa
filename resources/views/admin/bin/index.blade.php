@@ -16,12 +16,12 @@
 	</select>
 	<input type="submit" value="Apply" class="btn btn-default" style="float: left; text-align: center;">
 </form>
-<table class="table table-bordered" style="background: #ccc; color:#333;">
+<table class="table table-bordered" style="background: #fff; color:#333;">
 	<tr>
 		<th style="width:10px;"><input type="checkbox" id="bulk_select"></th>
 		<th style="width: calc(100vw - 600px);">Title</th>
 		<th>Date</th>
-		<th>Delete</th>
+		<th>Action</th>
 	</tr>
 	@if(count($pages))
 	@foreach( $pages as $page )
@@ -29,14 +29,12 @@
 		<td><input type="checkbox" value="{{$page->id}}" form="bulk_action_form" name="feed[]" class="checkbox"></td>
 		<td>
 			<a href="#"><h6>{{ $page->title }}</h6></a>
-			<a href="#" class="small">Delete</a>
-			<a href="#" class="small">Edit</a>
 		</td>
 		<td><h6>{{ $page->created_at }}</h6></td>
 		<td>
 			<form action="{{route('Bin_restore', ['id' => $page->id])}}" method="POST">
 				{{csrf_field()}}
-				<input type="submit" value="Restore" class="btn btn-primary">
+				<input type="submit" value="Restore" class="btn btn-link">
 			</form>
 		</td>
 	</tr>
@@ -52,7 +50,7 @@
 		<th><input type="checkbox" id="footer_checkbox"></th>
 		<th>Title</th>
 		<th>Date</th>
-		<th>Delete</th>
+		<th>Action</th>
 	</tr>
 </table>
 

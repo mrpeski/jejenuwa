@@ -75,6 +75,9 @@
                                 </ul>
                             </li>
                         @endif
+                        @if (!Auth::guest())
+                            <li><a href="{{ route('dash') }}">Dashboard</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>

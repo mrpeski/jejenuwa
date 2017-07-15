@@ -72,3 +72,19 @@ function xrange($start, $limit, $step = 1) {
     }
 }
 
+function convertSize($filesize) {
+    $div = $filesize / 1000;
+    switch ($div) {
+        case ($div <= 1000):
+            return round($filesize/1000, 1) . "KB";
+            break;
+        
+        case ($div <= 1000000):
+            return round($filesize/1000000, 2) . "MB";
+            break;
+
+        default:
+            return round($filesize/1000000000, 2) . "GB";
+            break;
+    }
+}

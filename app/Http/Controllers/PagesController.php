@@ -82,6 +82,12 @@ class PagesController extends Controller
         return view('admin.page.edit')->with('page', $page);
     }
 
+
+    public function preview($id) {
+        $page = $this->page->findorfail($id);
+        return view('admin.page.preview', compact('page'));
+    }
+    
     /**
      * Update the specified resource in storage.
      *

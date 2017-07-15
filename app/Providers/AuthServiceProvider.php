@@ -26,6 +26,7 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(Gaurd $gate)
     {
         $this->registerPolicies();
+        
         $gate->define('dash', function(){
             return (bool) (Auth::user());
         });

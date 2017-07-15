@@ -30,6 +30,7 @@
     overflow-y: auto;
     background-color: #f5f5f5;
     border-right: 1px solid #eee;
+    width: 150px;
 }
 
 .primary-link {
@@ -52,7 +53,7 @@
     text-decoration: none;
 }
 .nav-sidebar {
-    background: #111;
+    background: #222;
 }
 
 .nav-sidebar a {
@@ -87,9 +88,8 @@
     border-radius: 0;
     min-height: 900px;
 }
-
-
 </style>
+
 <body style="-webkit-font-smoothing:antialiased;">
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
@@ -147,11 +147,22 @@
                                 </ul>
                             </li>
                         @endif
+                        @if (!Auth::guest())
+                        <li><a href="{{ route('dash') }}">Dashboard</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="breadcrumb" style="margin-top: -22px; border-radius: 0;background:#2e2c2c">
+            <li><a href="/">Home</a></li>
+            @foreach(Request::segments() as $index => $segment)
+                <li class="{{ ($index === 1)  ? 'active' : '' }}"><a href="{{$segment}}">{{ucfirst($segment)}}</a></li>
+            @endforeach
+        </ul>
+
+        <!-- Sidebar -->
+        <div class="col-sm-3 col-md-2 sidebar" style="width:150px; background: #222;">
           <ul class="nav nav-sidebar">
           <li class="nav-header">
               <h4 >MVPS</h4>
@@ -159,14 +170,14 @@
             <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
             <li><a href="{{route('Ship_track')}}">Get Location</a></li>
             <li><a href="{{route('Ship_arrivals')}}">Arrivals</a></li>
-            <li><a href="{{route('Ship_track')}}">Inventory</a></li>
+            <li><a href="{{route('Product_index')}}">Inventory</a></li>
           </ul>
           <ul class="nav nav-sidebar" style="border-top: 1px solid #555">
           <li class="nav-header">
               <h4 >MANAGE CORE</h4>
           </li>
             <li><a href="{{route('Page_index')}}">Pages</a></li>
-            <li><a href="">Menu</a></li>
+            <li><a href="{{route('Menu_index')}}">Menu</a></li>
             <li><a href="{{route('Media_index')}}">Media</a></li>
           </ul>
           <ul class="nav nav-sidebar" style="border-top: 1px solid #555">
@@ -174,7 +185,7 @@
               <h4 >MISC</h4>
             </li>
             <li><a href="{{route('Bin_index')}}">Bin</a></li>
-            <li><a href="">Site Settings</a></li>
+            <li><a href="{{route('Setting_index')}}">Site Settings</a></li>
             <li><a href="">Logout</a></li>
           </ul>
         </div>

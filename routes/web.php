@@ -3,7 +3,7 @@
 use nuwa\MarineTraffic\MarineTrafficAPI;
 use Illuminate\Session\Store;
 use Illuminate\Support\Str;
-
+use Illuminate\Routing\UrlGenerator;
 
 // Route::get('/', '');
 get('/', ['as' => 'index' , 'uses' => 'FrontController@index']);
@@ -19,11 +19,16 @@ get('/random/{id?}', function($id = 4) {
 Route::group(['prefix' => 'admin', 'middleware' => 'can:dash'], function()
 {
 
+get('/', ['as' =>'dash', 'uses' => function(){
+    return view('admin.dashboard');
+}]);
+
 // Pages Routes
 get('/pages', ['as' => 'Page_index', 'uses' => 'PagesController@index']);
 get('/pages/create', ['as' => 'Page_create', 'uses'=>'PagesController@create']);
 post('/pages/create', ['as' => 'Page_store', 'uses' => 'PagesController@store']);
 get('/pages/{id}', ['as' => 'Page_edit', 'uses'=>'PagesController@edit']);
+get('/pages/{id}/preview', ['as' => 'Page_preview', 'uses'=>'PagesController@preview']);
 patch('/pages/{id}', ['as' => 'Page_update', 'uses'=> 'PagesController@update']);
 delete('/pages/{id}', ['as' => 'Page_delete', 'uses'=> 'PagesController@destroy']);
 
@@ -41,6 +46,9 @@ post('/ship', ['as' => 'Ship_store', 'uses' => 'ShipController@store']);
 get('/track', ['as' => 'Ship_track', 'uses' => 'MainController@track']);
 get('/arrivals', ['as' => 'Ship_arrivals', 'uses' => 'MainController@arrivals']);
 
+// Inventory
+get('/inventory', ['as' => 'Product_index', 'uses' => 'ProductController@index']);
+get('/inventory/add', ['as' => 'Product_create', 'uses' => 'ProductController@create']);
 
 // User Routes
 get('/staff', ['as' => 'Staff_index', 'uses' => 'MediaController@index']);
@@ -52,6 +60,12 @@ delete('/staff/{name}', ['as' => 'Staff_delete', 'uses' => 'MediaController@dest
 get('/bin', ['as' => 'Bin_index', 'uses' => 'BinController@index']);
 post('/bin/{id}', ['as' => 'Bin_restore', 'uses' => 'BinController@restore']);
 delete('/bin/{id}', ['as' => 'Bin_delete', 'uses' => 'BinController@destroy']);
+
+// Settings Routes
+get('/setting', ['as' => 'Setting_index', 'uses' => 'SettingController@getSettings']);
+post('/setting', ['as' => 'Setting_post', 'uses' => 'SettingController@postSettings']);
+
+get('/menu', ['as' => 'Menu_index', 'uses' => 'MenuController@index']);
 
 });
 

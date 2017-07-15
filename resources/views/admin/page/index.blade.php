@@ -16,27 +16,27 @@
 	</select>
 	<input type="submit" value="Apply" class="btn btn-default" style="float: left; text-align: center;">
 </form>
-<table class="table table-bordered" style="background: #ccc; color:#333;">
+<table class="table table-bordered" style="background: #fff; color:#333;">
 	<tr>
 		<th style="width:10px;"><input type="checkbox" id="bulk_select"></th>
 		<th style="width: calc(100vw - 600px);">Title</th>
 		<th>Date</th>
-		<th>Delete</th>
+		<th>Action</th>
 	</tr>
 	@if(count($pages))
 	@foreach( $pages as $page )
 	<tr class="">
 		<td><input type="checkbox" value="{{$page->id}}" form="bulk_action_form" name="feed[]" class="checkbox"></td>
 		<td>
-			<a href="{{route('Page_edit', $page->id)}}"><h6>{{ $page->title }}</h6></a>
-			<a href="{{route('Page_edit', $page->id)}}" class="small">Edit</a>
+			<a href="{{route('Page_preview', $page->id)}}"><h6>{{ $page->title }}</h6></a>
 		</td>
 		<td><h6>{{ $page->created_at }}</h6></td>
 		<td>
+			<a href="{{route('Page_edit', $page->id)}}" class="small">Edit</a>
 			<form action="{{route('Page_delete', $page->id)}}" method="POST">
 				{{csrf_field()}}
 				<input name="_method" value="DELETE" type="hidden">
-				<input type="submit" value="Delete" class="btn btn-primary">
+				<input type="submit" value="Trash" class="btn btn-link">
 			</form>
 		</td>
 	</tr>
@@ -52,7 +52,7 @@
 		<th><input type="checkbox" id="footer_checkbox"></th>
 		<th>Title</th>
 		<th>Date</th>
-		<th>Delete</th>
+		<th>Action</th>
 	</tr>
 </table>
 
