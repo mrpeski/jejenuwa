@@ -31,3 +31,12 @@ $factory->define(App\Page::class, function (Faker\Generator $faker) {
         'user_id' => $faker->numberBetween(1,100)
     ];
 });
+
+$factory->define(App\Product::class, function (Faker\Generator $faker) {
+
+    return [
+        'name' => $faker->name,
+        'body' => $faker->paragraph(5),
+        'user_id' => $faker->numberBetween(1,100)
+    ];
+});

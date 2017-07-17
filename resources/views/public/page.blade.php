@@ -7,9 +7,13 @@
             {{ session('message') }}
         </div>
     @endif
-    <div class="row">
+    	<h3>
         {{ $page->title }}
+    	</h3>
+    <div class="content">
+    	{{ $page->body }}
     </div>
     
 </div>
 @endsection
+

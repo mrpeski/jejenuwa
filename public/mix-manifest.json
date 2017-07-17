@@ -2,5 +2,8 @@
   "/js/app.js": "/js/app.js",
   "/css/app.css": "/css/app.css",
   "/js/admin.js": "/js/admin.js",
-  "/mix.js": "/mix.js"
+  "/mix.js": "/mix.js",
+  "/js/overview.js": "/js/overview.js",
+  "/js/modal.js": "/js/modal.js",
+  "/js/menu.js": "/js/menu.js"
 }

@@ -7,6 +7,8 @@ use Illuminate\Routing\UrlGenerator;
 
 // Route::get('/', '');
 get('/', ['as' => 'index' , 'uses' => 'FrontController@index']);
+get('/pages/{id}', [ 'as' => 'Front_pages', 'uses' => 'FrontController@pages']);
+
 
 get('/random/{id?}', function($id = 4) {
     $id = Str::random($id);
@@ -49,6 +51,9 @@ get('/arrivals', ['as' => 'Ship_arrivals', 'uses' => 'MainController@arrivals'])
 // Inventory
 get('/inventory', ['as' => 'Product_index', 'uses' => 'ProductController@index']);
 get('/inventory/add', ['as' => 'Product_create', 'uses' => 'ProductController@create']);
+get('/inventory/flow', ['as' => 'Product_flow', 'uses' => 'ProductFlowController@index']);
+post('/inventory/flow', ['as' => 'Product_flow', 'uses' => 'ProductFlowController@store']);
+post('/inventory/location', ['as' => 'Location_store', 'uses' => 'LocationController@store']);
 
 // User Routes
 get('/staff', ['as' => 'Staff_index', 'uses' => 'MediaController@index']);
@@ -66,6 +71,10 @@ get('/setting', ['as' => 'Setting_index', 'uses' => 'SettingController@getSettin
 post('/setting', ['as' => 'Setting_post', 'uses' => 'SettingController@postSettings']);
 
 get('/menu', ['as' => 'Menu_index', 'uses' => 'MenuController@index']);
+get('/menu/get', ['as' => 'Ajax_Menu_get', 'uses' => 'MenuController@getMenus']);
+post('/menu', ['as' => 'Menu_store', 'uses' => 'MenuController@newMenu']);
+post('menu/save', ['as' => 'Menu_update', 'uses' => 'MenuController@store']);
+
 
 });
 

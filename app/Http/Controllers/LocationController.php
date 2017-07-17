@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use App\Location;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class LocationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.inventory.overview');
+        //
     }
 
     /**
@@ -24,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.inventory.product.create');
+        //
     }
 
     /**
@@ -35,16 +35,19 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Location::create([
+            'name' => $request->input('location')
+        ]);
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Location $location)
     {
         //
     }
@@ -52,10 +55,10 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Location $location)
     {
         //
     }
@@ -64,10 +67,10 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  \App\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Location $location)
     {
         //
     }
@@ -75,10 +78,10 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Location $location)
     {
         //
     }

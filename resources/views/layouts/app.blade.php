@@ -41,15 +41,12 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ route('login') }}">Who we are</a></li>
-                    <li><a href="{{ route('login') }}">Our Roster</a></li>
-                    <li><a href="{{ route('login') }}">Contact Us</a></li>
+                     @if(getMenus('menu288'))
+                            {!! getNav(getMenus('menu288')) !!}
+                    @endif
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>

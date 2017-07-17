@@ -27,4 +27,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     
+
+
+    public function transaction() {
+        return $this->hasMany('App\ProductFlow');
+    }
+    
 }

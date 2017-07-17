@@ -28,7 +28,7 @@
             text-decoration: none;
         }
     </style>
-
+    
     <div class="row masthead" style="padding: 0; margin:0;">
         <div class="excerpt" style="background: black; color:#f1efe5; height:330px; width:250px;float:left; padding:20px;">
             <h2 style="font-size:30px;">Port Headline.</h2>
@@ -81,8 +81,7 @@
                 </li>
             </ul>
         </div>
-
-        <div class="track" style="padding:100px 20px;background:teal;height:400px; margin-top:20px">
+        <div class="track" style="padding:100px 20px;background:#537777;height:400px; margin-top:20px">
             <div class="row">
                 <div class="col-lg-12" style="text-align:center;">
                     <h2 style="color:black;font-size:18px;">Track My Goods</h2>

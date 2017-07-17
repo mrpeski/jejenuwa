@@ -16,6 +16,58 @@ function delete($url, $callback) {
 	return Route::delete($url, $callback);
 }
 
+function getSetting($name) {
+    $row = new App\Setting;
+    $data = $row->where('s_key', $name)->get(['value'])->first();
+    return $data->value; 
+}
+
+function getMenus($name) {
+    $data = getSetting($name);
+    $data = unserialize($data);
+    if(isset($data['menu_items'])) 
+    {
+            for($i=0; $i < count($data['menu_items']); $i++)
+            {
+                $x = $i+1;
+                $assembly[$i] = [ 'link' => $data['menu_items'][$i], 'title' => $data['menu_titles'][$i], 'parent_id' => $data['nestData'][$x]['parent_id'], 'order' => $data['nestData'][$x]['left'] ];
+            }
+            return $assembly;
+    }
+    else 
+    {
+            return 'Menu Empty';
+    }
+}
+
+function getNav($arr, $child = FALSE) 
+    {
+        $arr = collect($arr);
+        $arr = $arr->sortBy(function($item, $key){
+            return $item['order'];
+        })->toArray();
+        
+        $str = '';
+        if (count($arr)) 
+        {
+            $str .= $child == FALSE ? '<ul class="nav navbar-nav">' : '<ul>';
+            foreach ($arr as $item)
+            {
+                $str .= '<li class="top-level">';
+                $str .= "<a href='" . $item['link'] . "'>" . $item['title'] . "</a>";
+
+                if (isset($item['children']) && count($item['children']))
+                {
+                    $str .= $this->ol($item['children'], TRUE);
+                }
+                    $str .= '</li>'  . PHP_EOL;
+            }
+            $str .= '</ul>' . PHP_EOL;
+        }
+
+        return $str;
+    }
+
 function transform($arr) {
     $str='';
     foreach(array_keys($arr) as $needle){
@@ -88,3 +140,5 @@ function convertSize($filesize) {
             break;
     }
 }
+
+

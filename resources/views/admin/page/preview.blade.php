@@ -7,4 +7,7 @@
 
 <p>{{ $page->body }}</p>
 
+@section('modular_script')
+	<script type="" src="{{ asset('js/modal.js') }}"></script>
+@endsection
 @endsection

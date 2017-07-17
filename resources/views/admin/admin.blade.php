@@ -165,12 +165,12 @@
         <div class="col-sm-3 col-md-2 sidebar" style="width:150px; background: #222;">
           <ul class="nav nav-sidebar">
           <li class="nav-header">
-              <h4 >MVPS</h4>
+              <h4 >MANAGE INVENTORY</h4>
             </li>
             <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="{{route('Ship_track')}}">Get Location</a></li>
-            <li><a href="{{route('Ship_arrivals')}}">Arrivals</a></li>
-            <li><a href="{{route('Product_index')}}">Inventory</a></li>
+            <li><a href="{{route('Product_flow')}}">FLOW</a></li>
+            <li><a href="{{route('Ship_arrivals')}}">INFORMATION</a></li>
+            <li><a href="{{route('Product_index')}}">INSIGHT</a></li>
           </ul>
           <ul class="nav nav-sidebar" style="border-top: 1px solid #555">
           <li class="nav-header">
@@ -200,5 +200,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/admin.js') }}"></script>
+
+    @yield('modular_script')
 </body>
 </html>
