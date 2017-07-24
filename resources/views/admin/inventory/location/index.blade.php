@@ -4,11 +4,11 @@
 	@if (session('message'))
 		<div class="alert alert-success">{{ session('message') }}</div>
 	@endif
-	<h4 style="display: inline-block;">Pages</h4>
-	@can('create', App\Page::class)
-		<a href="pages/create" class="primary-link" style="display: inline-block;">New Page</a>
+	<h4 style="display: inline-block;">Warehouses</h4>
+	@can('create', App\Warehouse::class)
+		<a href="warehouses/create" class="primary-link" style="display: inline-block;">New Warehouse</a>
 	@endcan
-<p>All({{count($pages->all())}})</p>
+<p>All({{count($warehouses->all())}})</p>
 <form action="" method="POST" id="bulk_action_form">
 	{{ csrf_field() }}
 	<!-- <label for="bulk_action" style="float: left; height: 43px; text-align: center; line-height: 3; margin: 0 10px;">Bulk Action</label> -->
@@ -25,17 +25,17 @@
 		<th>Date</th>
 		<th>Action</th>
 	</tr>
-	@if(count($pages))
-	@foreach( $pages as $page )
+	@if(count($warehouses))
+	@foreach( $warehouses as $warehouse )
 	<tr class="">
-		<td><input type="checkbox" value="{{$page->id}}" form="bulk_action_form" name="feed[]" class="checkbox"></td>
+		<td><input type="checkbox" value="{{$warehouse->id}}" form="bulk_action_form" name="feed[]" class="checkbox"></td>
 		<td>
-			<a href="{{route('Page_preview', $page->id)}}"><h6>{{ $page->title }}</h6></a>
+			<a href="#"><h6>{{ $warehouse->name }}</h6></a>
 		</td>
-		<td><h6>{{ $page->created_at }}</h6></td>
+		<td><h6>{{ $warehouse->created_at }}</h6></td>
 		<td>
-			<a href="{{route('Page_edit', $page->id)}}" class="small">Edit</a>
-			<form action="{{route('Page_delete', $page->id)}}" method="POST">
+			<a href="{{route('Warehouse_edit', $warehouse->id)}}" class="small">Edit</a>
+			<form action="{{route('Page_delete', $warehouse->id)}}" method="POST">
 				{{csrf_field()}}
 				<input name="_method" value="DELETE" type="hidden">
 				<input type="submit" value="Trash" class="btn btn-link">
@@ -57,6 +57,8 @@
 		<th>Action</th>
 	</tr>
 </table>
+
+
 
 <script>
 	$('#bulk_select, #footer_checkbox').on(

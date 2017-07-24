@@ -15,7 +15,9 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Page' => 'App\Policies\PagePolicy',
+        'App\Page'      => 'App\Policies\PagePolicy',
+        'App\Media'     => 'App\Policies\MediaPolicy',
+        'App\Warehouse' => 'App\Policies\WarehousePolicy',
     ];
 
     /**
@@ -28,7 +30,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
         
         $gate->define('dash', function(){
-            return (bool) (Auth::user());
+            return  boolval(Auth::user());
         });
     }
 }

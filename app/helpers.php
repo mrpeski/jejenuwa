@@ -12,6 +12,10 @@ function patch($url, $callback) {
 	return Route::patch($url, $callback);
 }
 
+function put($url, $callback) {
+    return Route::put($url, $callback);
+}
+
 function delete($url, $callback) {
 	return Route::delete($url, $callback);
 }

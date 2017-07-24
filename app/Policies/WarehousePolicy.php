@@ -6,7 +6,7 @@ use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Policies\Authorization;
 
-class PagePolicy
+class WarehousePolicy
 {
     use HandlesAuthorization;
     use Authorization;

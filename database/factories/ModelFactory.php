@@ -20,6 +20,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+        'role_id' => factory("App\Role")->create()->id
     ];
 });
 
@@ -38,5 +39,12 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
         'name' => $faker->name,
         'body' => $faker->paragraph(5),
         'user_id' => $faker->numberBetween(1,100)
+    ];
+});
+
+$factory->define(App\Role::class, function (Faker\Generator $faker) {
+
+    return [
+        'name' => $faker->name,
     ];
 });

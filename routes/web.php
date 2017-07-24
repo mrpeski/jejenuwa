@@ -5,10 +5,43 @@ use Illuminate\Session\Store;
 use Illuminate\Support\Str;
 use Illuminate\Routing\UrlGenerator;
 
+use GuzzleHttp\Client;
+
+
 // Route::get('/', '');
 get('/', ['as' => 'index' , 'uses' => 'FrontController@index']);
 get('/pages/{id}', [ 'as' => 'Front_pages', 'uses' => 'FrontController@pages']);
 
+// N/A
+// get('/bal', function(MarineTrafficAPI $traffic){
+// 	$resp = $traffic->balance();
+// 	return $resp->getBody()->getContents();
+// });
+
+get('/arrivals', ['as' => 'Arrivals', function(MarineTrafficAPI $traffic){
+	$response = $traffic->arrivals();
+	echo $response->getBody()->getContents();
+}]);
+
+get('/vessel/{mmsi}', ['as' => 'Vessel_pos', function(MarineTrafficAPI $traffic, $mmsi){
+	$response = $traffic->vessel($mmsi);
+	echo $response->getBody()->getContents();
+}]);
+
+get('/github', function (Client $client)
+{
+	$github_key = 'e520096df0542867e99fdb6504e9d8d0b215858c';
+	$response = $client->request("GET", "api.github.com/users/mrpeski");
+	$body = $response->getBody();
+	$headers = $response->getHeaders();
+	return $body->getContents();
+});
+
+
+
+get('/balance', ['as' => 'Balance', function(MarineTrafficAPI $traffic){
+	return $traffic->balance();
+}]);
 
 get('/random/{id?}', function($id = 4) {
     $id = Str::random($id);
@@ -27,12 +60,12 @@ get('/', ['as' =>'dash', 'uses' => function(){
 
 // Pages Routes
 get('/pages', ['as' => 'Page_index', 'uses' => 'PagesController@index']);
-get('/pages/create', ['as' => 'Page_create', 'uses'=>'PagesController@create']);
-post('/pages/create', ['as' => 'Page_store', 'uses' => 'PagesController@store']);
-get('/pages/{id}', ['as' => 'Page_edit', 'uses'=>'PagesController@edit']);
+get('/pages/create', ['as' => 'Page_create', 'uses'=>'PagesController@create'])->middleware('can:create,App\Page');
+post('/pages/create', ['as' => 'Page_store', 'uses' => 'PagesController@store'])->middleware('can:create,App\Page');
+get('/pages/{id}', ['as' => 'Page_edit', 'uses'=>'PagesController@edit'])->middleware('can:edit,App\Page');
 get('/pages/{id}/preview', ['as' => 'Page_preview', 'uses'=>'PagesController@preview']);
-patch('/pages/{id}', ['as' => 'Page_update', 'uses'=> 'PagesController@update']);
-delete('/pages/{id}', ['as' => 'Page_delete', 'uses'=> 'PagesController@destroy']);
+patch('/pages/{id}', ['as' => 'Page_update', 'uses'=> 'PagesController@update'])->middleware('can:update,App\Page');
+delete('/pages/{id}', ['as' => 'Page_delete', 'uses'=> 'PagesController@destroy'])->middleware('can:delete,App\Page');
 
 // Media Routes
 get('/media', ['as' => 'Media_index', 'uses' => 'MediaController@index']);
@@ -54,6 +87,14 @@ get('/inventory/add', ['as' => 'Product_create', 'uses' => 'ProductController@cr
 get('/inventory/flow', ['as' => 'Product_flow', 'uses' => 'ProductFlowController@index']);
 post('/inventory/flow', ['as' => 'Product_flow', 'uses' => 'ProductFlowController@store']);
 post('/inventory/location', ['as' => 'Location_store', 'uses' => 'LocationController@store']);
+
+// Warehouse
+get('warehouses', ['as' => 'Warehouse_index', 'uses' => 'WarehouseController@index']);
+get('warehouses/create', ['as' => 'Warehouse_create', 'uses' => 'WarehouseController@create']);
+post('warehouse/create', ['as' => 'Warehouse_store', 'uses' => 'WarehouseController@store']);
+get('warehouse/{warehouse}', ['as' => 'Warehouse_edit', 'uses' => 'WarehouseController@edit']);
+post('warehouse/{warehouse}', ['as' => 'Warehouse_update', 'uses' => 'WarehouseController@update']);
+
 
 // User Routes
 get('/staff', ['as' => 'Staff_index', 'uses' => 'MediaController@index']);

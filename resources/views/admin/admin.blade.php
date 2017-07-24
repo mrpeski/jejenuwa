@@ -171,6 +171,7 @@
             <li><a href="{{route('Product_flow')}}">FLOW</a></li>
             <li><a href="{{route('Ship_arrivals')}}">INFORMATION</a></li>
             <li><a href="{{route('Product_index')}}">INSIGHT</a></li>
+            <li><a href="{{route('Warehouse_index')}}">Warehouse</a></li>
           </ul>
           <ul class="nav nav-sidebar" style="border-top: 1px solid #555">
           <li class="nav-header">

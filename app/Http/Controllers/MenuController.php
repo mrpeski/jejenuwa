@@ -11,7 +11,7 @@ class MenuController extends Controller
     public function index(Setting $setting)
     {
         $menus = $setting->where('s_key', 'like', 'menu%')->get();
-        
+
         $menus->map(function($item, $key)
         {
              return $item->value = unserialize($item->value);

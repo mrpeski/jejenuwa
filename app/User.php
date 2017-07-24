@@ -32,5 +32,26 @@ class User extends Authenticatable
     public function transaction() {
         return $this->hasMany('App\ProductFlow');
     }
+
+
+    public function isSuperAdmin() {
+        return  1 === intval($this->role_id); 
+    }
+
+    public function isManager() {
+        return 2 === intval($this->role_id); 
+    }
+
+    public function isAdmin() {
+        return 3 === $this->role_id; 
+    }
+
+    public function isStaff() {
+        return 4 === intval($this->role_id); 
+    }
+    
+    public function isNew() {
+        return 5 === intval($this->role_id); 
+    }
     
 }

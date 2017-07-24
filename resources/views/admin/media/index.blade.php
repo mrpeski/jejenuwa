@@ -2,14 +2,15 @@
 @extends('admin.admin')
 
 @section('content')
-
-<form method="POST" action="{{route('Media_upload')}}" enctype="multipart/form-data" class="dropzone">
-	{{ csrf_field() }}
-  <div class="fallback">
-	<input type="file" name="file" multiple/>
-	<input type="submit" value="Upload" class="btn btn-default">
-  </div>
-</form>
+@can('create', App\Media::class)
+	<form method="POST" action="{{route('Media_upload')}}" enctype="multipart/form-data" class="dropzone">
+		{{ csrf_field() }}
+	  <div class="fallback">
+		<input type="file" name="file" multiple/>
+		<input type="submit" value="Upload" class="btn btn-default">
+	  </div>
+	</form>	
+@endcan
 
 <div id="_tile">
 @foreach($media->all() as $media)

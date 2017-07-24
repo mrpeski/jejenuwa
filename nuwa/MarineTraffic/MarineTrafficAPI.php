@@ -16,12 +16,14 @@ class MarineTrafficAPI {
     ];
 
     protected $options = [
-        "timespan" => '', 
-        "country" => '', 
+        "timespan" => '20', 
+        "portid" => '', 
+        "mmsi" => '',
         "dwt_min" => "", 
         "dwy_max" => "", 
         "shiptype" => "", 
-        "protocol" => "json"
+        "protocol" => "json",
+        "fromcountry" => '',
     ];
 
     protected $ops = ["protocol" => "json","mmsi" => ''];
@@ -30,35 +32,47 @@ class MarineTrafficAPI {
     public function __construct(Client $client)
     {
          $this->client = $client;
-         $this->key = $this->key('EAKEY');
+         $this->key = $this->getKey('EAKEY');
     }
 
     public function arrivals()
     {
+
         $endpoint = "http://services.marinetraffic.com/api/expectedarrivals/v:3/{$this->key}/";
-        $this->options['country'] = 'NG';
-        $expected = transform($this->options);
+        $options = $this->options;
+        $options['portid'] = 'NGLOS';
+        $options['shiptype'] = $this->getShip('cargo');
+        $expected = transform($options);
         $expected = $endpoint.$expected;
+        // dd($expected);
         $response = $this->client->request('GET', $expected);
+
+
         return $response;
     }
 
+
+    public function getShip($val) {
+        return $this->shiptype[$val];
+    }
+    
     public function vessel($vessel)
     {
-        $this->options['imo'] = $vessel; 
+        $this->options['mmsi'] = $vessel; 
         $dir = transform($this->options);
-        $this->key = $this->key('SVPKEY');
-        $endpoint = "http://services.marinetraffic.com/api/exportvessel/v:5/{$dir}{$this->key}";
+        $this->key = $this->getKey('SVPKEY');
+        $endpoint = "http://services.marinetraffic.com/api/exportvessel/v:5/{$this->key}/{$dir}";
         $response = $this->client->request('GET', $endpoint);
         return $response;
     }
 
     public function balance()
     {
-         $check_credit = "http://services.marinetraffic.com/api/exportcredits/{$this->key}";
+         $endpoint = "http://services.marinetraffic.com/api/exportcredits/{$this->key}";
+         return $this->client->request('GET', $endpoint);
     }
 
-    private function key($key)
+    private function getKey($key)
     {
         return env($key);
     }
@@ -67,14 +81,5 @@ class MarineTrafficAPI {
         return $this->shiptype[$type];
     }
 
-    public function vesselHist($vessel)
-    {
-        $this->options['imo'] = $vessel; 
-        $dir = transform($this->options);
-        $this->key = $this->key('SVPKEY');
-        $endpoint = "http://services.marinetraffic.com/api/exportvesseltrack/{$dir}{$this->key}";
-        $response = $this->client->get($endpoint);
-        return $response;
-    }
 
 }
