@@ -1,7 +1,14 @@
 @extends('admin.admin')
 
 @section('content')
+<style>
+	#map { height: 500px; width: 600px;}
+</style>
 <div class="col-lg-12">
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus in tempore, obcaecati suscipit, omnis voluptatum iure laborum ut quod incidunt asperiores culpa fuga cum velit officiis inventore! Vel, rem ipsum?
+	<div id="map"></div>
 </div>
+@endsection
+
+@section('modular_script')
+<script src="{{asset('js/dash.js')}}"></script>
 @endsection

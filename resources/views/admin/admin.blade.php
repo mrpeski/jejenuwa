@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/leaflet.css') }}" rel="stylesheet">
     <link href="{{ asset('css/min/basic.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/min/dropzone.min.css') }}" rel="stylesheet">
 </head>
@@ -154,12 +155,13 @@
                 </div>
             </div>
         </nav>
-        <ul class="breadcrumb" style="margin-top: -22px; border-radius: 0;background:#2e2c2c">
+
+        <!-- <ul class="breadcrumb" style="margin-top: -22px; border-radius: 0;background:#2e2c2c">
             <li><a href="/">Home</a></li>
             @foreach(Request::segments() as $index => $segment)
                 <li class="{{ ($index === 1)  ? 'active' : '' }}"><a href="{{$segment}}">{{ucfirst($segment)}}</a></li>
             @endforeach
-        </ul>
+        </ul> -->
 
         <!-- Sidebar -->
         <div class="col-sm-3 col-md-2 sidebar" style="width:150px; background: #222;">
@@ -167,7 +169,7 @@
           <li class="nav-header">
               <h4 >MANAGE INVENTORY</h4>
             </li>
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="{{route('dash')}}">Overview <span class="sr-only">(current)</span></a></li>
             <li><a href="{{route('Product_flow')}}">FLOW</a></li>
             <li><a href="{{route('Ship_arrivals')}}">INFORMATION</a></li>
             <li><a href="{{route('Product_index')}}">INSIGHT</a></li>
@@ -193,12 +195,10 @@
         <div class="col-lg-9">
         @yield('content')
         </div>
-
         <!-- <footer style="min-height:300px; background: #000; position:relative; top:300px; left:0">
         
         </footer> -->
     </div>
-
     <!-- Scripts -->
     <script src="{{ asset('js/admin.js') }}"></script>
 
