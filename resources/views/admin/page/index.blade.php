@@ -1,10 +1,12 @@
 @extends('admin.admin')
 
 @section('content')
+{!! Breadcrumbs::render('pages') !!}
+
 	@if (session('message'))
 		<div class="alert alert-success">{{ session('message') }}</div>
 	@endif
-	<h4 style="display: inline-block;">Pages</h4>
+	<!-- <h4 style="display: inline-block;">Pages</h4> -->
 	@can('create', App\Page::class)
 		<a href="pages/create" class="primary-link" style="display: inline-block;">New Page</a>
 	@endcan

@@ -1,8 +1,9 @@
 @extends('admin.admin')
 
 @section('content')
+{!! Breadcrumbs::render('settings') !!}
 
-<h4>Settings</h4>
+<!-- <h4>Settings</h4> -->
 
 {{ Form::open(['route' => 'Setting_post', 'method' => 'POST', 'class' => 'form-horizontal'])}}
 <table class="table settings_page">

@@ -9,7 +9,7 @@
     @endforeach
     </ul>
 @endif
-
+{!! Breadcrumbs::render('info') !!}
 <form action="" method="POST">
     <!-- <input type="hidden" name="_method" value="PATCH"> -->
     {{csrf_field()}}

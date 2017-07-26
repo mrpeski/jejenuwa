@@ -1,10 +1,12 @@
 @extends('admin.admin')
 
 @section('content')
+{!! Breadcrumbs::render('warehouse') !!}
+
 	@if (session('message'))
 		<div class="alert alert-success">{{ session('message') }}</div>
 	@endif
-	<h4 style="display: inline-block;">Warehouses</h4>
+	<!-- <h4 style="display: inline-block;">Warehouses</h4> -->
 	@can('create', App\Warehouse::class)
 		<a href="warehouses/create" class="primary-link" style="display: inline-block;">New Warehouse</a>
 	@endcan

@@ -1,7 +1,7 @@
 @extends('admin.admin')
 
 @section('content')
-{!! Breadcrumbs::render('pages') !!}
+{!! Breadcrumbs::render('flow') !!}
 <div class="row">	
 	<div class="col-lg-4">
 	<h4>IN</h4>

@@ -33,7 +33,10 @@
     border-right: 1px solid #eee;
     width: 150px;
 }
-
+.breadcrumb {
+    background: transparent;
+    padding-left: 0;
+}
 .primary-link {
     background: #20f41f;
     padding: 3px 3px;

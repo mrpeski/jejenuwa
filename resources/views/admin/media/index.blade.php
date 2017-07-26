@@ -2,6 +2,7 @@
 @extends('admin.admin')
 
 @section('content')
+{!! Breadcrumbs::render('media') !!}
 @can('create', App\Media::class)
 	<form method="POST" action="{{route('Media_upload')}}" enctype="multipart/form-data" class="dropzone">
 		{{ csrf_field() }}

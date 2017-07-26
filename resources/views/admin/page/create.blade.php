@@ -1,7 +1,7 @@
 @extends('admin.admin')
 
 @section('content')
-
+{!! Breadcrumbs::render('new_page') !!}
 @if(count($errors))
     <ul class="alert alert-info" style="padding: 10px;">
     @foreach($errors->all() as $error)

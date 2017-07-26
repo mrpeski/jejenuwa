@@ -1,6 +1,7 @@
 @extends('admin.admin')
 
 @section('content')
+{!! Breadcrumbs::render('new_warehouse') !!}
 {!! Form::open(['route' => 'Warehouse_store', 'method' => 'POST']) !!}
     <div class="form-group">
         {{ Form::label('name', 'Name') }}

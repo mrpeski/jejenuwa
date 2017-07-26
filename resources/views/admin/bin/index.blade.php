@@ -1,10 +1,13 @@
 @extends('admin.admin')
 
 @section('content')
+
+{!! Breadcrumbs::render('bin') !!}
+
 @if (session('message'))
 		<div class="alert alert-success">{{ session('message') }}</div>
 @endif
-	<h4 style="display: inline-block;">Recycle Bin</h4>
+	<!-- <h4 style="display: inline-block;">Recycle Bin</h4> -->
 	<a href="pages/create" class="primary-link" style="display: inline-block;">New Page</a>
 <p>All({{count($pages->all())}})</p>
 <form action="" method="POST" id="bulk_action_form">

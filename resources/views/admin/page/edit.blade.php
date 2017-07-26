@@ -1,7 +1,7 @@
 @extends('admin.admin')
 
 @section('content')
-
+{!! Breadcrumbs::render('edit_page', $page) !!}
 @if(count($errors))
     <ul class="alert alert-info">
     @foreach($errors as $error)
@@ -9,6 +9,8 @@
     @endforeach
     </ul>
 @endif
+
+
 
 <form action="{{route('Page_update', ['id' => $page->id ])}}" method="POST">
     <input type="hidden" name="_method" value="PATCH">
