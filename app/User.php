@@ -33,6 +33,14 @@ class User extends Authenticatable
         return $this->hasMany('App\ProductFlow');
     }
 
+    public function warehouse() {
+        return $this->belongsTo('App\Warehouse');
+    }
+
+    public function role() {
+        return $this->belongsTo('App\Role');
+    }
+
 
     public function isSuperAdmin() {
         return  1 === intval($this->role_id); 

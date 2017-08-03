@@ -42,6 +42,12 @@
     padding: 3px 3px;
     border-radius: 2px;
     box-shadow: 2px 1px #222;
+    margin-bottom: 10px;
+    color: #0c1013;
+}
+
+.well {
+    background: #5a4a4a;
 }
 
 .btn-default {
@@ -185,6 +191,7 @@
             <li><a href="{{route('Page_index')}}">Pages</a></li>
             <li><a href="{{route('Menu_index')}}">Menu</a></li>
             <li><a href="{{route('Media_index')}}">Media</a></li>
+            <li><a href="{{route('Staff_index')}}">Staff</a></li>
           </ul>
           <ul class="nav nav-sidebar" style="border-top: 1px solid #555">
            <li class="nav-header">
@@ -196,6 +203,9 @@
           </ul>
         </div>
         <div class="col-lg-9">
+        @if (session('message'))
+            <div class="alert alert-success">{{ session('message') }}</div>
+         @endif
         @yield('content')
         </div>
         <!-- <footer style="min-height:300px; background: #000; position:relative; top:300px; left:0">

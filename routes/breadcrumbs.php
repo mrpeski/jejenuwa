@@ -91,4 +91,16 @@ Breadcrumbs::register('info', function($breadcrumbs)
     $breadcrumbs->push('Information', route('Ship_arrivals'));
 });
 
+Breadcrumbs::register('users', function($breadcrumbs)
+{
+    $breadcrumbs->parent('dash');
+    $breadcrumbs->push('Users', route('Staff_index'));
+});
+
+Breadcrumbs::register('user_single', function($breadcrumbs)
+{
+    $breadcrumbs->parent('users');
+    $breadcrumbs->push('edit');
+});
+
 

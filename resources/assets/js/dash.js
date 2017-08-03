@@ -1,6 +1,7 @@
 var L = require('leaflet');
-// 40.7133293 / 29.4669991
-var map = L.map('map').setView([40.7133293, 29.4669991], 7);
+
+var pos = [40.7133293, 29.4669991];
+var map = L.map('map').setView(pos, 7);
 // L.Marker.prototype.options.icon = "/images/marker.svg";
 var myIcon = L.icon({
     iconUrl: 'css/images/marker.png',
@@ -11,7 +12,12 @@ var myIcon = L.icon({
     shadowSize: [68, 95],
     shadowAnchor: [22, 94]
 });
-var marker = L.marker([40.7133293, 29.4669991], { icon: myIcon }).addTo(map);
+  var marker = L.marker(pos, { icon: myIcon }).addTo(map)
+      .bindPopup(pos.toString());
+
+      marker.addEventListener('mouseover', function(e) {
+        marker.openPopup();
+      });
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',

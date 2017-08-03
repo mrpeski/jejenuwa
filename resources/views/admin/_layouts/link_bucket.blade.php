@@ -18,6 +18,8 @@
 		{{ csrf_field() }}
 		<div class="form-group">
 		<input type="text" value="" placeholder="Title" class="form-control custom_title" style="background: transparent;">
+		</div>
+		<div class="form-group">
 		<input type="text" value="" placeholder="Link" class="form-control custom_link" style="background: transparent;">
 		</div>
 		<input type="submit" value="Add To Menu" class="btn btn-default" id="add_cust_link">

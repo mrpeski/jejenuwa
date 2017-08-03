@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProductFlow extends Model
 {
 	protected $table = 'products_flow';
-    protected $fillable = ['user_id', 'product_id', 'qty', 'location', 'notes', 'type'];
+    protected $fillable = ['user_id', 'product_id', 'qty', 'location_id', 'notes', 'type'];
 
 
     public function scopeInLatest($query)
@@ -24,6 +24,7 @@ class ProductFlow extends Model
     public function author() {
     	return $this->belongsTo('App\User', 'user_id');
     }
+    
 
        
 }

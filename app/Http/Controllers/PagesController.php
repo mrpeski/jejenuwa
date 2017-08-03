@@ -103,7 +103,7 @@ class PagesController extends Controller
             'body' => request('body'),
         ]);
 
-        return redirect()->back();
+        return redirect('admin/pages')->with('message', 'Success');
     }
 
     /**
@@ -116,6 +116,6 @@ class PagesController extends Controller
     {
         $page = $this->page->findorfail($id);
         $page->delete();
-        return redirect()->back();
+        return redirect('admin/pages')->with('message', 'Success');
     }
 }

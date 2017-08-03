@@ -63,30 +63,75 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 226);
+/******/ 	return __webpack_require__(__webpack_require__.s = 224);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 157:
+/***/ 155:
 /***/ (function(module, exports) {
 
 
-$('.trigger').on('click', function (e) {
-		$('#myModal').modal();
-});
+var handlers = {
+    dragstart: function dragstart(ev) {
+        ev.preventDefault();
+        var id = ev.target.id;
+        ev.dataTransfer.setData('text/plain', id);
+        console.log(ev.dataTransfer);
+        ev.dataTransfer.dropEffect = "copy";
+    },
+    // dropzone handlers
+    dragover: function dragover(ev) {
+        ev.preventDefault();
+        var target = ev.target;
+        ev.dataTransfer.dropEffect = "copy";
+        console.log('dragover');
+    },
+    drop: function drop(ev) {
+        ev.preventDefault();
+        ev.dataTransfer.dropEffect = "copy";
+        var data = ev.dataTransfer.getData('text');
+        ev.target.appendChild(document.getElementById(data));
+        // console.log('drop');
+    }
 
-$('#myModal').on('shown.bs.modal', function (e) {
-		e.preventDefault();
-		$('.modal-body').load("/admin/media #_tile");
+};
+var helpers = {
+    makedraggrable: function makedraggrable(elem) {
+        if (elem.length == undefined) {
+            elem.setAttribute('draggable', true);
+        } else if (elem.length >= 1) {
+            for (var i = 0; i < elem.length; i++) {
+                var item = elem[i];
+                item.setAttribute('draggable', true);
+            }
+        } else {
+            return false;
+        }
+    },
+    makedropzone: function makedropzone(elem) {
+        elem.addEventListener('drop', handlers.drop);
+        elem.addEventListener('dragover', handlers.dragover);
+        // elem.addEventListener('dragover', handlers.dragover);
+    }
+};
+
+var div = document.querySelectorAll(".img");
+var drops = document.querySelectorAll(".dropZone");
+
+helpers.makedraggrable(div);
+
+drops.forEach(function (elem) {
+    elem.addEventListener('drop', handlers.drop);
+    elem.addEventListener('dragover', handlers.dragover);
 });
 
 /***/ }),
 
-/***/ 226:
+/***/ 224:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(157);
+module.exports = __webpack_require__(155);
 
 
 /***/ })

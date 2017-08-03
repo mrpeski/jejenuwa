@@ -14,7 +14,18 @@ class CreateShipsTable extends Migration
     public function up()
     {
         Schema::create('ships', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('id');
+            $table->string('name');
+            $table->integer('type');
+            $table->integer('imo');
+            $table->string('call_sign');
+            $table->string('flag');
+            $table->float('length');
+            $table->float('width');
+            $table->integer('draught');
+            $table->integer('grt');
+            $table->integer('dwt');
+            $table->integer('year_built');
             $table->timestamps();
         });
     }

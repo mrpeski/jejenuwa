@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ProductFlow;
 use App\Product;
-use App\Location;
+use App\Warehouse;
 use Illuminate\Http\Request;
 
 class ProductFlowController extends Controller
@@ -14,7 +14,7 @@ class ProductFlowController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ProductFlow $flow, Location $loc)
+    public function index(ProductFlow $flow, Warehouse $loc)
     {
         $latest_IN = $flow->inLatest();
         $latest_OUT = $flow->outLatest();

@@ -4,6 +4,7 @@ use nuwa\MarineTraffic\MarineTrafficAPI;
 use Illuminate\Session\Store;
 use Illuminate\Support\Str;
 use Illuminate\Routing\UrlGenerator;
+use App\Location;
 
 use GuzzleHttp\Client;
 
@@ -12,36 +13,20 @@ use GuzzleHttp\Client;
 get('/', ['as' => 'index' , 'uses' => 'FrontController@index']);
 get('/pages/{id}', [ 'as' => 'Front_pages', 'uses' => 'FrontController@pages']);
 
-// N/A
-// get('/bal', function(MarineTrafficAPI $traffic){
-// 	$resp = $traffic->balance();
-// 	return $resp->getBody()->getContents();
-// });
+//311013800 // 
+get('/{id}', function(){
+	return view('public.track');
+})->where('id', '[0-9]+');
 
-get('/arrivals', ['as' => 'Arrivals', function(MarineTrafficAPI $traffic){
-	$response = $traffic->arrivals();
-	echo $response->getBody()->getContents();
+get('/vessel/{mmsi}', ['as' => 'Vessel_pos', function(Location $loc, $mmsi){
+	$response = $loc->createNew($mmsi);
+	return $response;
 }]);
 
-get('/vessel/{mmsi}', ['as' => 'Vessel_pos', function(MarineTrafficAPI $traffic, $mmsi){
-	$response = $traffic->vessel($mmsi);
-	echo $response->getBody()->getContents();
-}]);
-
-get('/github', function (Client $client)
-{
-	$github_key = 'e520096df0542867e99fdb6504e9d8d0b215858c';
-	$response = $client->request("GET", "api.github.com/users/mrpeski");
-	$body = $response->getBody();
-	$headers = $response->getHeaders();
-	return $body->getContents();
+get('/loc/{mmsi}', function(Location $loc, $mmsi) {
+	return $loc->getLoc($mmsi)->get();
 });
 
-
-
-get('/balance', ['as' => 'Balance', function(MarineTrafficAPI $traffic){
-	return $traffic->balance();
-}]);
 
 get('/random/{id?}', function($id = 4) {
     $id = Str::random($id);
@@ -97,10 +82,10 @@ post('warehouse/{warehouse}', ['as' => 'Warehouse_update', 'uses' => 'WarehouseC
 
 
 // User Routes
-get('/staff', ['as' => 'Staff_index', 'uses' => 'MediaController@index']);
-get('/staff/{name}', ['as' => 'Staff_show', 'uses' => 'MediaController@show'])->where(['type' => 'image|doc|video']);
-post('/staff', ['as' => 'Staff_create', 'uses' => 'MediaController@create']);
-delete('/staff/{name}', ['as' => 'Staff_delete', 'uses' => 'MediaController@destroy']);
+get('/staff', ['as' => 'Staff_index', 'uses' => 'UserController@index']);
+get('/staff/{id}', ['as' => 'Staff_page', 'uses' => 'UserController@show']);
+post('/staff/{id}', ['as' => 'Staff_update', 'uses' => 'UserController@update']);
+
 
 // Trash Bin Routes
 get('/bin', ['as' => 'Bin_index', 'uses' => 'BinController@index']);

@@ -63,12 +63,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 222);
+/******/ 	return __webpack_require__(__webpack_require__.s = 225);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 155:
+/***/ 156:
 /***/ (function(module, exports) {
 
 $('.sortable').nestedSortable({
@@ -213,10 +213,10 @@ $('.sortable').on('click', '.remove_menu', function (e) {
 
 /***/ }),
 
-/***/ 222:
+/***/ 225:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(155);
+module.exports = __webpack_require__(156);
 
 
 /***/ })

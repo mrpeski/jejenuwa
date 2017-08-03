@@ -82,7 +82,7 @@
 
         @yield('content')
 
-        <footer style="min-height:300px; background: #000; position:relative; top:300px; left:0">
+        <footer style="min-height:300px; background: #0d1226; position:relative; top:300px; left:0">
         <div class="container">
          <div class="col-lg-4 box" style="float:left; padding:20px;">
             <img src="{{asset('default/Forth_Jejenuwa_Logo.png')}}" alt="Forth Jejenuwa Company">  
@@ -126,5 +126,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+    @yield('modular_script')
 </body>
 </html>
