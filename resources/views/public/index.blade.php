@@ -87,10 +87,11 @@
                     <h2 style="color:black;font-size:18px;">Track My Goods</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                 </div>
-                <form action="#" class="col-lg-12">
+                <form action="{{ route('guana') }}" class="col-lg-12" method="POST">
+                    {{ csrf_field() }}
                     <input type="text" placeholder="Tracking ID" class="form-control" 
                     style="background:transparent; font-size: 30px; 
-                    border:none; border-bottom:1px solid #6d6760;padding:20px;text-align:center">
+                    border:none; border-bottom:1px solid #6d6760;padding:20px;text-align:center" name="goods_id">
                     <p style="text-align:center;">
                         <input type="submit" value="Get Location" class="btn btn-primary btn-lg" style="margin: 10px auto; width: auto; padding: 15px 30px;font-weight:500">
                     </p>

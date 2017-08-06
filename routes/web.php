@@ -6,6 +6,8 @@ use Illuminate\Support\Str;
 use Illuminate\Routing\UrlGenerator;
 use App\Location;
 
+use Illuminate\Http\Request;
+
 use GuzzleHttp\Client;
 
 
@@ -26,6 +28,8 @@ get('/vessel/{mmsi}', ['as' => 'Vessel_pos', function(Location $loc, $mmsi){
 get('/loc/{mmsi}', function(Location $loc, $mmsi) {
 	return $loc->getLoc($mmsi)->get();
 });
+
+post('/guana', ['as' => 'guana', 'uses' => 'Services\SearchController@search']);
 
 
 get('/random/{id?}', function($id = 4) {
