@@ -1,5 +1,5 @@
 <?php
-$curl = curl_init("http://services.marinetraffic.com/api/exportvessel/v:5/69d9e59ec4a9f1d7a50288ef16e9fa18b2f9b8e3/timespan:20/mmsi:310627000");
+$curl = curl_init("http://services.marinetraffic.com/api/exportvessel/v:5/{token}/timespan:20/mmsi:310627000");
 
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
