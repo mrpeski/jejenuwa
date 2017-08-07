@@ -44,7 +44,7 @@ function getMenus($name) {
     }
 }
 
-function getNav($arr, $child = FALSE) 
+function getNav($arr, $options = FALSE, $child = FALSE) 
     {
         $arr = collect($arr);
         $arr = $arr->sortBy(function($item, $key){
@@ -52,9 +52,12 @@ function getNav($arr, $child = FALSE)
         })->toArray();
         
         $str = '';
+        $attrs= ($options === TRUE) ? 'class="nav navbar-nav"' : 'class="nav"';
+        
+        $anchor = '<ul '.$attrs.'>';
         if (count($arr)) 
         {
-            $str .= $child == FALSE ? '<ul class="nav navbar-nav">' : '<ul>';
+            $str .= $child == FALSE ? $anchor : '<ul>';
             foreach ($arr as $item)
             {
                 $str .= '<li class="top-level">';

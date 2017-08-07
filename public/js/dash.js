@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 223);
+/******/ 	return __webpack_require__(__webpack_require__.s = 219);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -71,7 +71,7 @@
 /***/ 154:
 /***/ (function(module, exports, __webpack_require__) {
 
-var L = __webpack_require__(214);
+var L = __webpack_require__(213);
 
 var pos = [40.7133293, 29.4669991];
 var map = L.map('map').setView(pos, 7);
@@ -107,7 +107,7 @@ player.addEventListener('finish', function () {
 
 /***/ }),
 
-/***/ 214:
+/***/ 213:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -13697,7 +13697,7 @@ exports.map = createMap;
 
 /***/ }),
 
-/***/ 223:
+/***/ 219:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(154);

@@ -16,6 +16,7 @@ class Container
 	protected $lookup = array(
 			"mswu"		=> 	"Maersk",
 			"cclu"		=> 	"Cosco",
+			"uplo"		=>	"UPL",
 		);
 
 	public function __construct($number)

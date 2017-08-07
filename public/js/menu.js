@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 225);
+/******/ 	return __webpack_require__(__webpack_require__.s = 221);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -213,7 +213,7 @@ $('.sortable').on('click', '.remove_menu', function (e) {
 
 /***/ }),
 
-/***/ 225:
+/***/ 221:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(156);

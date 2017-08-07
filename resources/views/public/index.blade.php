@@ -41,21 +41,13 @@
     <div class="row slots" style="padding: 0; margin:0;">
         <div class="col-lg-4 box" style="float:left; padding:20px;background:#ebebeb;height:200px">
         <h2 style="color:black; font-size:18px;margin-top:0;">Our Services</h2>
-        <ul class="nav">
-            <li>
-                <a href="#">lorem ipsum</a>
-            </li>
-            <li>
-                <a href="">dolor ime</a>
-            </li>
-            <li>
-                <a href="">tries bien</a>
-            </li>
-        </ul>
+        @if(true)
+            {!! getNav(getMenus('menu443')) !!}
+        @endif
         </div>
         <div class="col-lg-4 box" style="float:left; padding:20px;background:#6d6760;height:200px">
         <h2 style="color:black;font-size:18px;margin-top:0;">Your Industry</h2>
-        <ul class="nav">
+        <!-- <ul class="nav">
             <li>
                 <a href="#">lorem ipsum</a>
             </li>
@@ -65,21 +57,17 @@
             <li>
                 <a href="">tries bien</a>
             </li>
-        </ul>
+        </ul> -->
+        @if(true)
+            {!! getNav(getMenus('menu92')) !!}
+        @endif
         </div>
+
         <div class="col-lg-4 box" style="float:left; padding:20px;background:#383531;height:200px">
             <h2 style="color:black;font-size:18px;margin-top:0;">Advisory</h2>
-            <ul class="nav">
-                <li>
-                    <a href="#">lorem ipsum</a>
-                </li>
-                <li>
-                    <a href="">dolor ime</a>
-                </li>
-                <li>
-                    <a href="">tries bien</a>
-                </li>
-            </ul>
+            @if(true)
+                {!! getNav(getMenus('menu231')) !!}
+            @endif
         </div>
         <div class="track" style="padding:100px 20px;background:#537777;height:400px; margin-top:20px">
             <div class="row">

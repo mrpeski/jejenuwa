@@ -8,6 +8,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .js('resources/assets/js/overview.js', 'public/js')
     .js('resources/assets/js/modal.js', 'public/js')
     .js('resources/assets/js/menu.js', 'public/js')
+    .react('resources/assets/js/components/lomeeditor.jsx', 'public/js/components')
    	.sass('resources/assets/sass/app.scss', 'public/css');
 
 // Full API

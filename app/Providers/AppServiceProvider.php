@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use nuwa\Guana\Carriers\Maersk;
 use nuwa\Guana\Carriers\Cosco;
+use nuwa\Guana\Carriers\UPL;
 
 use GuzzleHttp\Client;
 
@@ -33,6 +34,10 @@ class AppServiceProvider extends ServiceProvider
 
        $this->app->bind('Cosco',  function($app){
             return new Cosco;
+       });
+
+       $this->app->bind('UPL',  function($app){
+            return new UPL;
        });
     }
 }

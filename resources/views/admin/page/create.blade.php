@@ -24,10 +24,15 @@
         <label for="title" class="label">Date</label>
         <input type="date" class="form-control" name="publish_date" id="publish_date">
     </div> -->
-    <div class="form-group">
+    <div id="container"></div>
+    <!-- <div class="form-group">
         <label for="body" class="label for-content">Content</label>
         <textarea name="body" id="body" cols="30" rows="10" class="form-control content"></textarea>
-    </div>
+    </div> -->
 
 </form>
 @endsection
+
+    @section('modular_script')
+    <script src="{{asset('js/components/lomeeditor.js')}}"></script>
+    @endsection

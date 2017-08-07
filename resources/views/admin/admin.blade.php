@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,6 +13,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/leaflet.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/Draft.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/RichEditor.css') }}" rel="stylesheet">
     <link href="{{ asset('css/min/basic.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/min/dropzone.min.css') }}" rel="stylesheet">
 </head>

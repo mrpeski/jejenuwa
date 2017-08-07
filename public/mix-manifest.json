@@ -7,5 +7,6 @@
   "/js/modal.js": "/js/modal.js",
   "/js/menu.js": "/js/menu.js",
   "/js/dash.js": "/js/dash.js",
-  "/js/drags.js": "/js/drags.js"
+  "/js/drags.js": "/js/drags.js",
+  "/js/components/lomeeditor.js": "/js/components/lomeeditor.js"
 }

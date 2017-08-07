@@ -44,8 +44,8 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                     @if(false)
-                            {!! getNav(getMenus('menu288')) !!}
+                     @if(true)
+                            {!! getNav(getMenus('menu92'), true) !!}
                     @endif
                         <!-- Authentication Links -->
                         @if (Auth::guest())
